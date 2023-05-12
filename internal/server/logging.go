@@ -2,26 +2,23 @@ package server
 
 import (
 	"context"
-	log "grpc_logging/proto/logging"
+	"github.com/qara-qurt/grpc_logging/internal/service"
+	log "github.com/qara-qurt/grpc_logging/proto/logging"
 )
 
-//type LoggingService interface {
-//	Insert(ctx context.Context, req *log.LogRequest) error
-//}
-
-type LoggingServer struct {
+type LoggingService interface {
+	Insert(ctx context.Context, req *log.LogRequest) error
 }
 
-func NewLoggingServer() *LoggingServer {
+type LoggingServer struct {
+	log.UnimplementedLoggingServiceServer
+	service LoggingService
+}
+
+func NewLoggingServer(service *service.Service) *LoggingServer {
 	return &LoggingServer{}
 }
 
-func (h *LoggingServer) Log(ctx context.Context, request *log.LogRequest) (*log.LogResponse, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (h *LoggingServer) mustEmbedUnimplementedLoggingServiceServer() {
-	//TODO implement me
+func (l *LoggingServer) Log(ctx context.Context, request *log.LogRequest) (*log.LogResponse, error) {
 	panic("implement me")
 }

@@ -2,8 +2,8 @@ package server
 
 import (
 	"fmt"
+	log "github.com/qara-qurt/grpc_logging/proto/logging"
 	"google.golang.org/grpc"
-	log "grpc_logging/proto/logging"
 	"net"
 )
 
